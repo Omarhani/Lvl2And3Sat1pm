@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 import reader.ReadDataDrivenFromJson;
 import reader.ReadDataFromJson;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
