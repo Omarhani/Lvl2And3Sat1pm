@@ -5,13 +5,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 import pages.HomePage;
 import reader.ReadDataFromJson;
 
-import java.io.FileNotFoundException;
+import java.lang.reflect.Method;
 
 public class BaseTests {
 
@@ -21,13 +19,18 @@ public class BaseTests {
 
     @Parameters("browser")
     @BeforeClass
-    public void setUp(String browser) throws FileNotFoundException {
-        readDataFromJson = new ReadDataFromJson();
+    public void setUp(String browser,Method method) {
+
         setUpBrowser(browser);
-        driver.get(readDataFromJson.readJsonFile().URL);
 
         driver.manage().window().maximize();
         homePage = new HomePage(driver);
+
+    }
+    @BeforeMethod
+    public void goHome(Method method) throws Exception {
+        readDataFromJson = new ReadDataFromJson();
+        driver.get(readDataFromJson.readJsonFile().URL);
     }
     @Parameters("browser")
     public void setUpBrowser(String browser){
@@ -47,6 +50,7 @@ public class BaseTests {
             driver = new FirefoxDriver(options);
         }
     }
+
 
     @AfterClass
     public void tearDown(){
