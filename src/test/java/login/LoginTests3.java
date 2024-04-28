@@ -13,33 +13,33 @@ import java.io.IOException;
 
 public class LoginTests3 extends BaseTests {
 
-    ReadDataDrivenFromJson readDataDrivenFromJson;
-
-    @DataProvider
-    public Object[] testDataForSuccessfulLogin() throws IOException, ParseException {
-        readDataDrivenFromJson = new ReadDataDrivenFromJson();
-        return readDataDrivenFromJson.testDataForSuccessfulLogin();
-    }
-
-    @Test(dataProvider = "testDataForSuccessfulLogin")
-    public void testSuccessfulLogin(String data) throws FileNotFoundException {
-//        readDataFromJson = new ReadDataFromJson();
-        String users[]= data.split(",");
-
-        //  [0] --> omar
-        //  [1] --> 123
-        LoginPage loginPage = homePage.clickOnLoginLink();
-        loginPage.insertUsername(users[0]);
-        loginPage.insertPassword(users[1]);
-
-
-
-
-
-//        loginPage.insertUsername(readDataFromJson.readJsonFile().Login.ValidCredentials.Username);
-//        loginPage.insertPassword(readDataFromJson.readJsonFile().Login.ValidCredentials.Password);
-
-
-        loginPage.clickOnLoginButton();
-    }
+//    ReadDataDrivenFromJson readDataDrivenFromJson;
+//
+//    @DataProvider
+//    public Object[] testDataForSuccessfulLogin() throws IOException, ParseException {
+//        readDataDrivenFromJson = new ReadDataDrivenFromJson();
+//        return readDataDrivenFromJson.testDataForSuccessfulLogin();
+//    }
+//
+//    @Test(dataProvider = "testDataForSuccessfulLogin")
+//    public void testSuccessfulLogin(String data) throws FileNotFoundException {
+////        readDataFromJson = new ReadDataFromJson();
+//        String users[]= data.split(",");
+//
+//        //  [0] --> omar
+//        //  [1] --> 123
+//        LoginPage loginPage = homePage.clickOnLoginLink();
+//        loginPage.insertUsername(users[0]);
+//        loginPage.insertPassword(users[1]);
+//
+//
+//
+//
+//
+////        loginPage.insertUsername(readDataFromJson.readJsonFile().Login.ValidCredentials.Username);
+////        loginPage.insertPassword(readDataFromJson.readJsonFile().Login.ValidCredentials.Password);
+//
+//
+//        loginPage.clickOnLoginButton();
+//    }
 }
